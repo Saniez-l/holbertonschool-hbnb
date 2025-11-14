@@ -7,18 +7,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <header>
+        <nav>
+            <div class="logo-group">
+                <img src="images/logo.png" alt="HBnB Logo" class="logo">
+                <p class="warning-text">you won't come back</p>
+            </div>
+            <a href="index.html" class="center-link">Home</a>
+            <div class="login-group">
+                <a href="login.html" class="login-button">Login</a>
+            </div>
+        </nav>
+    </header>
+
     <main>
-        <form id="login-form">
-            <h2>Login</h2>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <button type="submit">Login</button>
-        </form>
+        <div class="main-inner">
+            <section class="review-card" id="login-form">
+                <h2>Login</h2>
+
+                <form>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="submit" class="details-button">Login</button>
+                </form>
+            </section>
+        </div>
     </main>
-    <script src="scripts.js"></script>
+
+    <footer>
+        <p>© 2025 HBnB. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>

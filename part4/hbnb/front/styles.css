@@ -1,8 +1,4 @@
-/* 
-  This is a SAMPLE File to get you started. Follow the instructions on the project to complete the tasks. 
-  You'll probably need to override some of theese styles.
-*/
-
+/* Global */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -13,20 +9,225 @@
 body {
     background-color: #f4f4f4;
     color: #333;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Header */
 header {
-    background-color: #333;
+    background-color: #000;
     color: #fff;
     padding: 1rem;
 }
 
-nav a {
+/* Nav : Flex container */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo + texte à gauche */
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+/* Texte warning */
+.warning-text {
+    color: red;
+    font-family: "Creepster", cursive;
+    font-size: 1rem;
+}
+
+/* Home centré */
+.center-link {
+    flex: 1;
+    text-align: center;
     color: #fff;
     text-decoration: none;
-    margin-left: 1rem;
+}
+
+/* Login à droite */
+.login-group {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.login-button {
+    color: #fff;
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+/* Main / Cards */
+main {
+    padding: 2rem;
+    flex: 1;
+}
+
+.place-card {
+    background-color: #fff;
+    border: 1px solid #ddd;    
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 300px;
+    line-height: 1.4;
+}
+
+.place-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.place-card h2,
+.place-card p {
+    margin-bottom: 10px;
+}
+
+.details-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.details-button:hover {
+    background-color: #555;
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/*place.html*/
+/* ESPACEMENT GLOBAL PLACE DETAILS */
+.place-details {
+    max-width: 800px;
+    margin: 20px auto;       /* espace autour + centrer */
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* Image du logement */
+.place-details .place-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;     /* espace avec le titre */
+}
+
+/* Bloc texte */
+.place-info h1 {
+    margin-bottom: 15px;
+}
+
+.place-info p {
+    margin-bottom: 10px;
+}
+
+.place-info ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+/* SECTION REVIEWS */
+#reviews {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+#reviews h2 {
+    margin-bottom: 15px;
+}
+
+/* CARD REVIEW */
+.review-card {
+    background: #fff;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* ADD REVIEW BUTTON */
+#add-review {
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: right;
+}
+/* ADD REVIEW PAGE */
+#review-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#review-form h2 {
+    margin-bottom: 15px;
+}
+
+#review-form label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+#review-form textarea,
+#review-form select {
+    width: 100%;
+    margin: 10px 0 20px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+
+#review-form button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#review-form button:hover {
+    background-color: #555;
+}
+body {
+    min-height: 100vh;
 }
 
 main {
-    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }

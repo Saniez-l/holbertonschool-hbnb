@@ -9,20 +9,35 @@
 <body>
     <header>
         <nav>
-            <a href="login.html" id="login-link">Login</a>
+            <div class="logo-group">
+                <img src="images/logo.png" alt="HBnB Logo" class="logo">
+                <p class="warning-text">you won't come back</p>
+            </div>
+            <a href="index.html" class="center-link">Home</a>
+            <div class="login-group">
+                <a href="login.html" class="login-button">Login</a>
+            </div>
         </nav>
     </header>
     <main>
-        <section id="filter">
+        <div id="filter">
             <label for="price-filter">Max Price:</label>
             <select id="price-filter">
                 <!-- Options will be populated dynamically -->
             </select>
-        </section>
-        <section id="places-list">
-            <!-- List of places will be populated dynamically -->
-        </section>
+        </div>
+        <div id="places-list">
+            <article class="place-card">
+                <img src="images/winchesterHouse.png" alt="Winchester house" class="place-image">
+                <h2>Winchester house</h2>
+                <p>Price: $120 / night</p>
+                <button class="details-button">View Details</button>
+            </article>
+        </div>
     </main>
     <script src="scripts.js"></script>
+    <footer>
+        <p>© 2025 HBnB. All rights reserved.</p>
+    </footer>
 </body>
 </html>
