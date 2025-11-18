@@ -1,3 +1,36 @@
+/*debut reset de demarrage*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td{ 
+  margin:0;
+  padding:0;
+}
+table {
+  border-collapse:collapse;
+  border-spacing:0;
+}
+fieldset,img { 
+  border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+  font-style:normal;
+  font-weight:normal;
+}
+ol,ul {
+  list-style:none;
+}
+caption,th {
+  text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-size:100%;
+  font-weight:normal;
+}
+q:before,q:after {
+  content:'';
+}
+abbr,acronym { 
+  border:0;
+}
+/*fin de reset */
 /* Global */
 * {
     box-sizing: border-box;
@@ -61,11 +94,18 @@ nav {
     flex: 1;
 }
 
-.login-button {
+.login-button,
+#logout-button {
+    background-color: transparent;
     color: #fff;
+    border: none;
+    padding: 0 8px;
+    cursor: pointer;
     text-decoration: none;
-    padding-left: 10px;
+    font-size: 1rem;
 }
+
+
 
 /* Main / Cards */
 main {
