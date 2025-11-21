@@ -120,12 +120,18 @@ class PlaceResource(Resource):
 
             reviews_data = []
             for r in place.reviews:
+                review_user = facade.get_user(r.user_id) 
+
+                user_full_name = None
+                if review_user:
+                    user_full_name = f"{review_user.first_name} {review_user.last_name}"
                 reviews_data.append({
                     "id": r.id,
                     "text": r.text,
                     "rating": r.rating,
                     "user_id": r.user_id,
-                    "place_id": r.place_id
+                    "place_id": r.place_id,
+                    "user_full_name": user_full_name
                 })
 
             return {

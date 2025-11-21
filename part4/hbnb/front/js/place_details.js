@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault(); 
             const reviewLink = e.target;
             const placeIdToRedirect = reviewLink.getAttribute('data-place-id');
-            const reviewPath = "/part4/hbnb/front/add_review.html"; // CHEMIN ABSOLU CORRIGÉ
+            const reviewPath = "/part4/hbnb/front/add_review.html";
 
             if (placeIdToRedirect) {
                  // Navigation forcée pour garantir que l'ID n'est pas perdu dans l'URL
@@ -120,8 +120,8 @@ function displayPlaceDetails(place) {
             <p>${place.description}</p>
 
             <a id="add-review-link" data-place-id="${place.id}"
-                class="btn-add-review">
-                ➕ Add a Review
+                class="details-button add-review-btn-pos">
+                Add a Review
             </a>
         </div>
     `;
@@ -145,8 +145,9 @@ function displayReviews(reviews) {
     reviews.forEach(r => {
         const div = document.createElement('div');
         div.className = 'review-card';
+        const reviewerName = r.user_full_name || 'Anonymous';
         div.innerHTML = `
-            <p><strong>User:</strong> ${r.user_id || 'Anonymous'}</p>
+            <p><strong>User:</strong> ${reviewerName}</p>
             <p>${r.text}</p>
             <p><strong>Rating:</strong> ${r.rating}/5</p>
         `;
