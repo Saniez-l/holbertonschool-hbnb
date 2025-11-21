@@ -17,6 +17,7 @@ CREATE TABLE places (
     latitude FLOAT,
     longitude FLOAT,
     owner_id CHAR(36),
+    image_url VARCHAR(255),
     FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE
 );
 

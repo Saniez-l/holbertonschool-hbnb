@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
         priceFilter.addEventListener('change', filterPlaces);
     }
 
-    // Gestion du bouton logout
+    // Logout
     const logoutButton = document.getElementById('logout-button');
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
-            localStorage.removeItem('token'); // supprime le token
-            window.location.reload(); // recharge la page pour réafficher Login
+            localStorage.removeItem('token');
+            window.location.reload();
         });
     }
 });
@@ -21,8 +21,6 @@ function checkAuthentication() {
     const loginLink = document.getElementById('login-link');
     const logoutButton = document.getElementById('logout-button');
     const token = localStorage.getItem('token');
-
-    console.log("Token trouvé :", token);
 
     if (token && token !== "undefined" && token !== "null") {
         loginLink.style.display = 'none';
@@ -45,6 +43,7 @@ async function fetchPlaces(token) {
 
         const places = await response.json();
         displayPlaces(places);
+        console.log(places);
     } catch (error) {
         console.error("Erreur fetchPlaces :", error);
     }
@@ -52,21 +51,32 @@ async function fetchPlaces(token) {
 
 function displayPlaces(places) {
     const placesList = document.getElementById('places-list');
-    const existingCard = placesList.querySelector('.place-card'); // Winchester House
-
     placesList.innerHTML = '';
-    if (existingCard) placesList.appendChild(existingCard);
 
     places.forEach(place => {
         const div = document.createElement('article');
         div.classList.add('place-card');
+
+        // Définir l'image correctement
+        const imageSrc = place.image_url || 'images/default_place.png';
+
         div.innerHTML = `
+            <img src="${imageSrc}" alt="${place.title}" class="place-image">
             <h2>${place.title}</h2>
-            <p>Description: ${place.description}</p>
             <p class="price">Price: $${place.price}</p>
-            <button class="details-button">View Details</button>
+            <button class="details-button" data-id="${place.id}">View Details</button>
         `;
         placesList.appendChild(div);
+    });
+
+    // Ajouter événement pour tous les boutons "View Details"
+    const detailButtons = document.querySelectorAll('.details-button');
+    detailButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const placeId = e.target.getAttribute('data-id');
+            if (!placeId) return;
+            window.location.href = `place.html?place_id=${placeId}`;
+        });
     });
 }
 

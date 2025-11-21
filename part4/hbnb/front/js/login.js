@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
             localStorage.setItem('token', data.access_token);
+            document.cookie = `token=${data.access_token}; path=/`;
             window.location.href = 'index.html';
 
         } catch (error) {

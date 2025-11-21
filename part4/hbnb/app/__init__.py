@@ -20,13 +20,19 @@ def create_app(config_class=config.DevelopmentConfig):
     db.init_app(app)
     jwt.init_app(app)
 
-    # CORS pour ton front local
+    # Configuration CORS simplifiée - UN SEUL endroit
     CORS(
         app,
-        resources={r"/api/*": {"origins": "http://127.0.0.1:5500"}},
-        supports_credentials=True,
-        methods=["GET","POST","OPTIONS"]
+        resources={r"/api/*": {
+            "origins": ["http://127.0.0.1:5500", "http://localhost:5500"],
+            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+            "allow_headers": ["Content-Type", "Authorization"],
+            "expose_headers": ["Content-Type", "Authorization"],
+            "supports_credentials": True
+        }}
     )
+
+    # SUPPRIMEZ la fonction @app.after_request !!!
 
     api = Api(
         app,
@@ -41,8 +47,5 @@ def create_app(config_class=config.DevelopmentConfig):
     api.add_namespace(amenities_ns, path='/api/v1/amenities')
     api.add_namespace(places_ns, path='/api/v1/places')
     api.add_namespace(reviews_ns, path='/api/v1/reviews')
-
-    # Supprime le before_request CORS custom
-    # Flask-CORS s’en occupe correctement maintenant
 
     return app

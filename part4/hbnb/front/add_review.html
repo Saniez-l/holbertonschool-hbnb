@@ -9,50 +9,54 @@
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo-group">
-                <img src="images/logo.png" alt="HBnB Logo" class="logo">
-                <p class="warning-text">you won't come back</p>
-            </div>
-            <a href="index.html" class="center-link">Home</a>
-            <div class="login-group">
-                <a href="login.html" class="login-button">Login</a>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <div  class="main-wrapper">
-            <section class="review-card" id="review-form">
-                <h2>Add a Review</h2>
-                <p><strong>Reviewing:</strong> <span id="place-name">Winchester house</span></p>
-
-                <form>
-                    <label for="review">Your Review:</label>
-                    <textarea id="review" name="review" required></textarea>
-
-                    <label for="rating">Rating:</label>
-                    <select id="rating" name="rating" required>
-                        <option value="">Choose...</option>
-                        <option value="1">1 ★</option>
-                        <option value="2">2 ★★</option>
-                        <option value="3">3 ★★★</option>
-                        <option value="4">4 ★★★★</option>
-                        <option value="5">5 ★★★★★</option>
-                    </select>
-
-                    <button type="submit" class="details-button">Submit Review</button>
-                </form>
-
-                <a href="place.html" class="details-button" style="margin-top:15px; display:inline-block;">Back to Place</a>
-            </section>
+<header>
+    <nav>
+         <div class="logo-group">
+             <img src="images/logo.png" alt="HBnB Logo" class="logo">
+             <p class="warning-text">you won't come back</p>
         </div>
-    </main>
+        <a href="index.html" class="center-link">Home</a>
+        <div class="login-group">
+                 <a href="login.html" class="login-button" id="login-link">Login</a>
+            <button id="logout-button" style="display:none;" class="login-button">Logout</button>
+        </div>
+    </nav>
+</header>
 
-    <footer>
-        <p>© 2025 HBnB. All rights reserved.</p>
-    </footer>
+<main>
+    <div class="main-wrapper">
+        <section class="review-card" id="review-section">
+            <h2>Add a Review</h2>
+            <p><strong>Reviewing:</strong> <span id="place-name"></span></p>
+
+            <form id="add-review-form">
+                <label for="review-text">Your Review:</label>
+                <textarea id="review-text" name="review" required></textarea>
+
+                <label for="review-rating">Rating:</label>
+                <select id="review-rating" name="rating" required>
+                    <option value="">Choose...</option>
+                    <option value="1">1 ★</option>
+                    <option value="2">2 ★★</option>
+                    <option value="3">3 ★★★</option>
+                    <option value="4">4 ★★★★</option>
+                    <option value="5">5 ★★★★★</option>
+                </select>
+
+                <button type="submit" class="details-button">Submit Review</button>
+            </form>
+
+            <a href="#" id="back-to-place" class="details-button" style="margin-top:15px; display:inline-block;">Back to Place</a>
+
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>© 2025 HBnB. All rights reserved.</p>
+</footer>
+
+<script src="js/add_review.js"></script>
 
 </body>
 </html>

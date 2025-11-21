@@ -9,76 +9,39 @@
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo-group">
-                <img src="images/logo.png" alt="HBnB Logo" class="logo">
-                <p class="warning-text">you won't come back</p>
-            </div>
-
-            <a href="index.html" class="center-link">Home</a>
-
-            <div class="login-group">
-                <a href="login.html" class="login-button">Login</a>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-
-        <!-- PLACE DETAILS -->
-        <section class="place-details">
-            <img src="images/winchesterHouse.png" alt="Winchester house" class="place-image">
-
-            <div class="place-info">
-                <h1>Winchester house</h1>
-                <p><strong>Host:</strong> Sarah Winchester</p>
-                <p><strong>Price:</strong> $120 / night</p>
-
-                <h3>Description:</h3>
-                <p>
-                    The Winchester house is a mysterious and labyrinth-like mansion 
-                    known for its strange architecture, hidden passages, and ghostly legends. 
-                    A unique and unsettling stay for brave guests.
-                </p>
-
-                <h3>Amenities:</h3>
-                <ul>
-                    <li>Wi-Fi</li>
-                    <li>Fireplace</li>
-                    <li>Secret rooms</li>
-                    <li>Private garden</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- REVIEWS -->
-        <div id="reviews">
-            <h2>Reviews</h2>
-
-            <div class="review-card">
-                <p class="review-user"><strong>User:</strong> Alice</p>
-                <p class="review-comment">Spooky but amazing experience!</p>
-                <p class="review-rating"><strong>Rating:</strong> 5/5</p>
-            </div>
-
-            <div class="review-card">
-                <p class="review-user"><strong>User:</strong> Mark</p>
-                <p class="review-comment">Lots of strange corridors, felt like an adventure.</p>
-                <p class="review-rating"><strong>Rating:</strong> 4/5</p>
-            </div>
+<header>
+    <nav>
+        <div class="logo-group">
+            <img src="images/logo.png" alt="HBnB Logo" class="logo">
+            <p class="warning-text">you won't come back</p>
         </div>
 
-        <!-- ADD REVIEW BUTTON -->
-        <div id="add-review">
-            <a href="add_review.html" class="details-button">Add Review</a>
+        <a href="index.html" class="center-link">Home</a>
+
+        <div class="login-group">
+            <a href="login.html" class="login-button" id="login-link">Login</a>
+            <button id="logout-button" style="display:none;">Logout</button>
         </div>
+    </nav>
+</header>
 
-    </main>
+<main>
+    <!-- PLACE DETAILS -->
+    <section class="place-details" id="place-details">
+        <!-- Le JS va remplir dynamiquement ici -->
+    </section>
 
-    <footer>
-        <p>© 2025 HBnB. All rights reserved.</p>
-    </footer>
+    <!-- REVIEWS -->
+    <div id="reviews">
+        <h2>Reviews</h2>
+        <div id="reviews-container"></div>
+    </div>
+</main>
 
+<footer>
+    <p>© 2025 HBnB. All rights reserved.</p>
+</footer>
+
+<script src="js/place_details.js"></script>
 </body>
 </html>

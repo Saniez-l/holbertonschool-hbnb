@@ -7,4 +7,4 @@ class ReviewRepository(SQLAlchemyRepository):
         super().__init__(Review)
 
     def get_reviews_by_place(self, value):
-        return self.model.query.filter_by(**{'place_id': value})
+        return self.model.query.filter_by(**{'place_id': value}).all()

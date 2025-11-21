@@ -84,10 +84,12 @@ class HBnBFacade:
     
     def compare_review(self, user_id, place_id):
         """
-        Verify if is not place of user or if it s the first review
+        Vérifie si l'utilisateur a déjà fait une review pour la place
         """
         reviews = self.review_repo.get_all()
         for review in reviews:
-            if review.user_id == user_id and review.place_id == place_id:
+            if str(review.user_id) == str(user_id) and str(review.place_id) == str(place_id):
                 return True
         return False
+    
+

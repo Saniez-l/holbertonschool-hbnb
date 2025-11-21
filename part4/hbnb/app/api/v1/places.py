@@ -80,6 +80,8 @@ class PlaceList(Resource):
                 'title': place.title,
                 'latitude': place.latitude,
                 'longitude': place.longitude,
+                'price': place.price,
+                'image_url': getattr(place, 'image_url', None)
             } for place in places]
             return all_places, 200
         except Exception as e:
@@ -117,25 +119,23 @@ class PlaceResource(Resource):
                     amenities_data.append({"id": a.id, "name": a.name})
 
             reviews_data = []
-            review_ids = place.reviews if place.reviews else []
-            
-            for review_id in review_ids: 
-                r = facade.get_review(review_id)
-                if r:
-                    reviews_data.append({
-                        "id": r.id,
-                        "text": r.text,
-                        "rating": r.rating,
-                        "user_id": r.user_id,
-                        "place_id": r.place_id
-                    })
-            
+            for r in place.reviews:
+                reviews_data.append({
+                    "id": r.id,
+                    "text": r.text,
+                    "rating": r.rating,
+                    "user_id": r.user_id,
+                    "place_id": r.place_id
+                })
+
             return {
                 "id": place.id,
                 "title": place.title,
                 "description": place.description,
+                "price": place.price,
                 "latitude": place.latitude,
                 "longitude": place.longitude,
+                "image_url": place.image_url,
                 "owner": owner_data,
                 "amenities": amenities_data,
                 "reviews": reviews_data
@@ -153,7 +153,6 @@ class PlaceResource(Resource):
         """Update a place's information"""
         current_user = get_jwt()
 
-        # Set is_admin default to False if not exists
         is_admin = current_user.get('is_admin', False)
         user_id = current_user.get('id')
 
@@ -188,7 +187,20 @@ class PlaceResource(Resource):
             place_put.latitude = place_data.get('latitude', place_put.latitude)
             place_put.longitude = place_data.get('longitude', place_put.longitude)
             place_put.owner_id = place_data.get('owner_id', place_put.owner_id)
-            place_put.amenities = place_data.get('amenities', place_put.amenities)
+
+            amenity_ids = place_data.get('amenities', [])
+            if amenity_ids:
+                amenities = []
+                for a_id in amenity_ids:
+                    a_obj = facade.get_amenity(a_id)
+                    if a_obj:
+                        amenities.append(a_obj)
+                    else:
+                        return {"error": f"Amenity {a_id} not found"}, 400
+                place_put.amenities = amenities
+                    
+
+
             place_put.reviews = place_data.get('reviews', place_put.reviews)
             return {"message": "Place updated successfully"}, 200
         except ValueError:
