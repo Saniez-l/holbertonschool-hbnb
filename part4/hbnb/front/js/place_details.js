@@ -108,6 +108,10 @@ function displayPlaceDetails(place) {
 
     const imageUrl = place.image_url || 'images/default_place.png'; 
 
+    const amenitiesList = (place.amenities && place.amenities.length > 0)
+        ? place.amenities.map(a => a.name).join(', ')
+        : 'None';
+
     // Injection de l'ensemble de la structure HTML
     section.innerHTML = `
         <img src="${imageUrl}" alt="${place.title}" class="place-image">
@@ -118,6 +122,7 @@ function displayPlaceDetails(place) {
             <p><strong>Longitude:</strong> ${place.longitude}</p>
             <h3>Description:</h3>
             <p>${place.description}</p>
+            <p><strong>Amenities:</strong> ${amenitiesList}</p>
 
             <a id="add-review-link" data-place-id="${place.id}"
                 class="details-button add-review-btn-pos">

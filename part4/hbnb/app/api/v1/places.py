@@ -111,12 +111,10 @@ class PlaceResource(Resource):
                 owner_data = None
         
             amenities_data = []
-            amenity_ids = place.amenities if place.amenities else []
-            
-            for amenity_id in amenity_ids: 
-                a = facade.get_amenity(amenity_id)
-                if a:
+            if place.amenities:
+                for a in place.amenities:
                     amenities_data.append({"id": a.id, "name": a.name})
+
 
             reviews_data = []
             for r in place.reviews:

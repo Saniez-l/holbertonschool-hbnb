@@ -30,7 +30,7 @@ class Place(BaseModel):
     )
     owner = relationship("User", back_populates="places")
 
-    def __init__(self, title, description, price, latitude, longitude, owner_id):
+    def __init__(self, title, description, price, latitude, longitude, owner_id, image_url=None):
         super().__init__()
         self.title = title
         self.description = description
@@ -38,6 +38,7 @@ class Place(BaseModel):
         self.latitude = latitude
         self.longitude = longitude
         self.owner_id = owner_id
+        self.image_url = image_url
 
     @validates("title")
     def validate_title(self, key, value):
