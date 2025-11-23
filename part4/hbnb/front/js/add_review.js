@@ -1,38 +1,46 @@
 function handleLogout(event) {
     event.preventDefault(); 
-    // 1. Supprime le token
+
+    const confirmed = confirm("Do you dare log out? Afraid of the adventure?");
+    if (!confirmed) return;
+
     localStorage.removeItem('token');
-    // 2. Redirige vers l'accueil
-    window.location.href = 'index.html'; 
+
+    const video = document.createElement('video');
+    video.src = 'images/logout.mp4';
+    video.style.position = 'fixed';
+    video.style.top = 0;
+    video.style.left = 0;
+    video.style.width = '100%';
+    video.style.height = '100%';
+    video.style.zIndex = 9999;
+    video.autoplay = true;
+    video.onended = () => {
+        window.location.href = 'index.html';
+    };
+
+    document.body.appendChild(video);
+    video.play();
 }
+
 function updateAuthUI() {
     const loginLink = document.getElementById('login-link');
     const token = localStorage.getItem('token');
-
-    console.log("PAGE ADD REVIEW: Valeur du Token:", token);
     const logoutButton = document.getElementById('logout-button');
     
-    // Vérification de l'existence du token (même logique que sur index.js)
     const isAuthenticated = !!token && token !== "undefined" && token !== "null";
 
-    console.log("PAGE ADD REVIEW: isAuthenticated est :", isAuthenticated);
-
-    if (loginLink) {
-        // Masquer/Afficher le lien Login
-        loginLink.style.display = isAuthenticated ? 'none' : 'block';
-    }
-
+    if (loginLink) loginLink.style.display = isAuthenticated ? 'none' : 'block';
     if (logoutButton) {
-        // Afficher/Masquer le bouton Logout
         logoutButton.style.display = isAuthenticated ? 'block' : 'none';
 
-        // Attache le gestionnaire d'événement seulement si l'utilisateur est connecté
         if (isAuthenticated && !logoutButton.hasAttribute('data-listener-added')) {
              logoutButton.addEventListener('click', handleLogout);
-             logoutButton.setAttribute('data-listener-added', 'true'); // Évite d'ajouter le listener plusieurs fois
+             logoutButton.setAttribute('data-listener-added', 'true');
         }
     }
 }
+
 
 async function fetchPlacePreview(placeId, token) {
     const placeTitleEl = document.getElementById('place-title');

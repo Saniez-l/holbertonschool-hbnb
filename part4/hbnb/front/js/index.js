@@ -10,9 +10,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Logout
     const logoutButton = document.getElementById('logout-button');
     if (logoutButton) {
-        logoutButton.addEventListener('click', () => {
+        logoutButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            const confirmed = confirm("Do you dare log out? Afraid of the adventure?");
+            if (!confirmed) return;
+
             localStorage.removeItem('token');
-            window.location.reload();
+
+            const video = document.createElement('video');
+            video.src = 'images/logout.mp4';
+            video.style.position = 'fixed';
+            video.style.top = 0;
+            video.style.left = 0;
+            video.style.width = '100%';
+            video.style.height = '100%';
+            video.style.zIndex = 9999;
+            video.autoplay = true;
+            video.onended = () => {
+                window.location.href = 'index.html';
+            };
+
+            document.body.appendChild(video);
+            video.play();
         });
     }
 });
