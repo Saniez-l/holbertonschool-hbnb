@@ -34,20 +34,30 @@ document.addEventListener('DOMContentLoaded', () => {
             video.play();
         });
     }
+
+    const mapButton = document.getElementById("map-button");
+    if (mapButton) {
+        mapButton.addEventListener("click", () => {
+            window.location.href = "map.html";
+        });
+    }
 });
 
 function checkAuthentication() {
     const loginLink = document.getElementById('login-link');
     const logoutButton = document.getElementById('logout-button');
+    const mapButton = document.getElementById('map-button');
     const token = localStorage.getItem('token');
 
     if (token && token !== "undefined" && token !== "null") {
         loginLink.style.display = 'none';
         if (logoutButton) logoutButton.style.display = 'inline-block';
+        if (mapButton) mapButton.style.display = 'inline-block';
         fetchPlaces(token);
     } else {
         loginLink.style.display = 'block';
         if (logoutButton) logoutButton.style.display = 'none';
+        if (mapButton) mapButton.style.display = 'none';
     }
 }
 
@@ -115,3 +125,4 @@ function filterPlaces() {
         }
     });
 }
+

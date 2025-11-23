@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HBNB World Map</title>
+    <style> 
+        /* Configuration de la page pour le plein écran */
+        body { margin: 0; overflow: hidden; background-color: #000; } 
+        
+        /* Style du bouton Retour */
+        #back-button {
+            position: absolute; 
+            top: 20px; 
+            left: 20px; 
+            z-index: 100;
+            padding: 12px 18px; 
+            background-color: #333; 
+            color: white;
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-family: sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        #back-button:hover { background-color: #555; }
+
+        /* Animation de clignotement pour les points rouges */
+        @keyframes blink {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.4); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+
+    <script src="//unpkg.com/three/build/three.min.js"></script>
+    <script src="//unpkg.com/globe.gl/dist/globe.gl.min.js"></script>
+</head>
+<body>
+    
+    <button id="back-button">Back to Places</button>
+    
+    <div id="globeViz"></div>
+
+    <script src="js/map.js"></script>
+</body>
+</html>

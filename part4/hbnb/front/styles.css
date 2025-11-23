@@ -298,3 +298,20 @@ footer {
     padding: 1rem;
     margin-top: 2rem;
 }
+
+.map-btn {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 0 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.map-btn:hover {
+    color: #ff0;
+    background-color: transparent;
+}
+
