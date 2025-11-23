@@ -115,14 +115,28 @@ function displayPlaceDetails(place) {
     // Injection de l'ensemble de la structure HTML
     section.innerHTML = `
         <img src="${imageUrl}" alt="${place.title}" class="place-image">
-        <div class="place-info">
-            <h1>${place.title}</h1>
-            <p><strong>Price:</strong> $${place.price} / night</p>
-            <p><strong>Latitude:</strong> ${place.latitude}</p>
-            <p><strong>Longitude:</strong> ${place.longitude}</p>
-            <h3>Description:</h3>
-            <p>${place.description}</p>
-            <p><strong>Amenities:</strong> ${amenitiesList}</p>
+                <div class="place-info">
+            <h1 class="place-title">${place.title}</h1>
+
+            <div class="place-detail-item">
+                <span class="label">Price:</span> $${place.price} / night
+            </div>
+
+            <div class="place-detail-item">
+                <span class="label">Latitude:</span> ${place.latitude}
+            </div>
+
+            <div class="place-detail-item">
+                <span class="label">Longitude:</span> ${place.longitude}
+            </div>
+
+            <div class="place-detail-item">
+                <span class="label">Description:</span> ${place.description}
+            </div>
+
+            <div class="place-detail-item">
+                <span class="label">Amenities:</span> ${amenitiesList}
+            </div>
 
             <a id="add-review-link" data-place-id="${place.id}"
                 class="details-button add-review-btn-pos">

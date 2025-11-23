@@ -1,37 +1,18 @@
-/*debut reset de demarrage*/
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td{ 
-  margin:0;
-  padding:0;
+/* reset */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
 }
-table {
-  border-collapse:collapse;
-  border-spacing:0;
-}
-fieldset,img { 
-  border:0;
-}
-address,caption,cite,code,dfn,em,strong,th,var {
-  font-style:normal;
-  font-weight:normal;
-}
-ol,ul {
-  list-style:none;
-}
-caption,th {
-  text-align:left;
-}
-h1,h2,h3,h4,h5,h6 {
-  font-size:100%;
-  font-weight:normal;
-}
-q:before,q:after {
-  content:'';
-}
-abbr,acronym { 
-  border:0;
-}
-/*fin de reset */
-/* Global */
+table { border-collapse: collapse; border-spacing: 0; }
+fieldset, img { border: 0; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal; }
+ol, ul { list-style: none; }
+caption, th { text-align: left; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+q:before, q:after { content: ''; }
+abbr, acronym { border: 0; }
+
+/* global */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -39,27 +20,30 @@ abbr,acronym {
     font-family: Arial, sans-serif;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     background-color: #f4f4f4;
     color: #333;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Header */
+/* header */
 header {
     background-color: #000;
     color: #fff;
     padding: 1rem;
 }
 
-/* Nav : Flex container */
 nav {
     display: flex;
     align-items: center;
 }
 
-/* Logo + texte à gauche */
 .logo-group {
     display: flex;
     align-items: center;
@@ -72,14 +56,12 @@ nav {
     height: auto;
 }
 
-/* Texte warning */
 .warning-text {
     color: red;
     font-family: "Creepster", cursive;
     font-size: 1rem;
 }
 
-/* Home centré */
 .center-link {
     flex: 1;
     text-align: center;
@@ -87,7 +69,6 @@ nav {
     text-decoration: none;
 }
 
-/* Login à droite */
 .login-group {
     display: flex;
     justify-content: flex-end;
@@ -105,14 +86,15 @@ nav {
     font-size: 1rem;
 }
 
-
-
-/* Main / Cards */
+/* main */
 main {
     padding: 2rem;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
+/* cards */
 .place-card {
     background-color: #fff;
     border: 1px solid #ddd;    
@@ -126,14 +108,69 @@ main {
 
 .place-image {
     width: 100%;
-    height: 150px;
+    height: auto;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
+    aspect-ratio: 16/9;
 }
 
 .place-card h2,
 .place-card p {
     margin-bottom: 10px;
+}
+
+#places-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 10px;
+}
+
+@media (max-width: 1024px) {
+    #places-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    #places-list { grid-template-columns: 1fr; }
+}
+
+.place-title {
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* place details */
+.place-details {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.place-details .place-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.place-info h1 { margin-bottom: 15px; }
+.place-info p { margin-bottom: 10px; }
+.place-info ul { margin-top: 10px; padding-left: 20px; }
+
+.place-detail-item .label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-right: 5px;
+    color: #333;
+}
+
+.place-detail-item {
+    margin-bottom: 15px;
+    line-height: 1.6;
 }
 
 .details-button {
@@ -149,52 +186,7 @@ main {
     background-color: #555;
 }
 
-/* Footer */
-footer {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
-}
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
-/*place.html*/
-/* ESPACEMENT GLOBAL PLACE DETAILS */
-.place-details {
-    max-width: 800px;
-    margin: 20px auto;       /* espace autour + centrer */
-    padding: 20px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-}
-
-/* Image du logement */
-.place-details .place-image {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 20px;     /* espace avec le titre */
-}
-
-/* Bloc texte */
-.place-info h1 {
-    margin-bottom: 15px;
-}
-
-.place-info p {
-    margin-bottom: 10px;
-}
-
-.place-info ul {
-    margin-top: 10px;
-    padding-left: 20px;
-}
-
-/* SECTION REVIEWS */
+/* reviews */
 #reviews {
     max-width: 800px;
     margin: 20px auto;
@@ -204,7 +196,6 @@ html, body {
     margin-bottom: 15px;
 }
 
-/* CARD REVIEW */
 .review-card {
     background: #fff;
     margin: 20px 0;
@@ -213,65 +204,60 @@ html, body {
     border-radius: 10px;
 }
 
-/* ADD REVIEW BUTTON */
 #add-review {
     max-width: 800px;
     margin: 30px auto;
     text-align: right;
 }
-/* ADD REVIEW PAGE */
-#review-form {
+
+#add-review-form {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 20px;
-    margin: 20px auto;
+    margin: 20px 0 20px 20px;
     max-width: 600px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-#review-form h2 {
+#add-review-form h2 {
     margin-bottom: 15px;
 }
 
-#review-form label {
+#add-review-form label {
     font-weight: bold;
     margin-top: 10px;
     display: block;
+    font-size: 1.1rem;
 }
 
-#review-form textarea,
-#review-form select {
-    width: 100%;
-    margin: 10px 0 20px;
+#add-review-form textarea,
+#add-review-form select {
+    width: 80%;
+    max-width: 400px;
+    display: block;
+    margin: 10px auto 25px;
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
     resize: vertical;
+    line-height: 1.5;
 }
 
-#review-form button {
+#add-review-form button {
     background-color: #333;
     color: white;
     border: none;
     padding: 8px 12px;
     border-radius: 6px;
     cursor: pointer;
+    display: block;
+    margin: 0 auto;
 }
 
-#review-form button:hover {
+#add-review-form button:hover {
     background-color: #555;
 }
-body {
-    min-height: 100vh;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
 
 .add-review-btn-pos {
     display: inline-block; 
@@ -281,4 +267,34 @@ main {
     margin-left: auto;
     margin-right: auto;
     text-decoration: none; 
+}
+
+#review-section h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#review-section > p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+#review-section > p strong {
+    font-weight: bold;
+}
+
+#review-section > p {
+    font-weight: normal;
+}
+
+
+/* footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
 }

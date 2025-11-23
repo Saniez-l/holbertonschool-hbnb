@@ -34,6 +34,27 @@ function updateAuthUI() {
     }
 }
 
+async function fetchPlacePreview(placeId, token) {
+    const placeTitleEl = document.getElementById('place-title');
+    const placeNameSpan = document.getElementById('place-name');
+
+    if (!placeId) return;
+
+    try {
+        const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+        const response = await fetch(`http://127.0.0.1:5000/api/v1/places/${placeId}`, { headers });
+        if (!response.ok) throw new Error('Impossible de récupérer la place');
+
+        const place = await response.json();
+        placeTitleEl.textContent = place.title;
+        placeNameSpan.textContent = place.title;
+
+    } catch (err) {
+        console.error('Erreur fetch place:', err);
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
     updateAuthUI();
 
@@ -53,6 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
         alert("Place ID manquant !");
         return;
     }
+
+    fetchPlacePreview(placeId, token);
 
     // Mettre le lien "Back to Place" avec le bon place_id
     backLink.href = `place.html?place_id=${encodeURIComponent(placeId)}`;
